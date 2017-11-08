@@ -6,14 +6,15 @@
 <link rel="shortcut icon" type="image/x-icon" href="css/images/favicon.ico">
 <link rel="stylesheet" href="css/style.css" type="text/css" media="all">
 <link rel="stylesheet" href="css/colorbox.css" type="text/css" media="all">
+<script src="app/angular.js"></script>
 <script src="js/jquery-1.8.0.min.js"></script>
 <script src="js/jquery.colorbox-min.js"></script>
 <!--[if lt IE 9]><script src="js/modernizr.custom.js"></script><![endif]-->
 <script src="js/functions.js"></script>
 </head>
-<body>
+<body ng-app="moviesApp">
 <!-- wrapper -->
-<div id="wrapper">
+<div id="wrapper" ng-controller="mainController">
   <div class="light-bg">
     <!-- shell -->
     <div class="shell">
@@ -172,11 +173,9 @@
           <div class="widget">
             <h3 class="widgettitle">Opening This Week</h3>
             <ul>
-              <li><a href="#">The Hunter Games <strong>$98 Mil</strong></a></li>
-              <li><a href="#">American Reunion <strong>$50 Mil</strong></a></li>
-              <li><a href="#">Titanic <strong>$23 Mil</strong></a></li>
-              <li><a href="#">Wrath of the Titans <strong>$50 Mil</strong></a></li>
-              <li><a href="#">Mirror Mirro <strong>$7 Mil</strong></a></li>
+              <li ng-repeat="upcomingFilm in upcomingFilms">
+                  <a>{{ upcomingFilm.original_title }}<strong>{{ upcomingFilm.vote_average }}</strong></a>
+              </li>
             </ul>
           </div>
           <div class="widget socials-widget">
@@ -210,5 +209,8 @@
   </div>
 </div>
 <!-- end of wrapper -->
+<script src="app/modules/movies.js"></script>
+<script src="app/controllers/main.js"></script>
+<script src="app/services/APIs.js"></script>
 </body>
 </html>
