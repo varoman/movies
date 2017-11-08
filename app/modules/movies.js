@@ -1,4 +1,4 @@
 (function () {
     'use strict';
-    angular.module('moviesApp', []);
+    angular.module('moviesApp', ['ui.router']);
 })();

@@ -1,0 +1,135 @@
+<div id="wrapper">
+  <div class="light-bg">
+    <!-- shell -->
+    <div class="shell">
+      <!-- header -->
+      <div class="header">
+        <!-- socials -->
+        <div class="socials"> <a href="#" class="facebook-ico">facebook-ico</a> <a href="#" class="twitter-ico">twitter-ico</a> <a href="#" class="you-tube-ico">you-tube-ico</a> </div>
+        <!-- end of socials -->
+        <h1 id="logo"><a href="#">Moviereviews</a></h1>
+        <!-- navigation -->
+        <nav id="navigation">
+          <ul>
+            <li><a href="#">SHOW ALL</a></li>
+            <li><a href="#">LATEST MOVIES <span>20</span></a></li>
+            <li><a href="#">TOP RATED</a></li>
+            <li><a href="#">MOST COMMENTED</a></li>
+          </ul>
+        </nav>
+        <!-- end of navigation -->
+        <div class="cl">&nbsp;</div>
+      </div>
+      <!-- end of header -->
+      <!-- main -->
+      <div class="main">
+        <!-- content -->
+        <section class="content">
+          <!-- post -->
+          <div class="post" ng-repeat="movie in movies">
+            <!-- post-inner -->
+            <div class="post-inner">
+              <header>
+                <h2><a href="#">{{ movie.title}}</a></h2>
+                <p class="tags"><a href="#">FAMILY</a> <a href="#">COMEDY</a> <a href="#">ANIMATION</a> </p>
+                <div class="cl">&nbsp;</div>
+              </header>
+              <div class="img-holder"> 
+                <a href="#">
+                  <img mg-src={{ movies.imagePath }}  alt="{{movies.imagePath}}">
+                </a> 
+                <a href="css/images/post-img.jpg" class="btn-full-image popup">
+                  <span>FALL IMAGE {{movie.imagePath}}</span>
+                </a> 
+              </div>
+              <!-- meta -->
+              <div class="meta">
+                <p class="date">{{ movie.release_date | date: YYMMDD}} <a href="#">JOHN DOE</a></p>
+                <div class="right">
+                  <div class="rating-holder">
+                    <p>RATING</p>
+                    <div class="rating"> <span style="width: 100%;"></span> </div>
+                  </div>
+                  <a href="#" class="comments">59 comments</a> </div>
+                <div class="cl">&nbsp;</div>
+              </div>
+              <!-- end of meta -->
+              <!-- post-cnt -->
+              <div class="post-cnt">
+                <p>{{ movie.overview }}</p>
+                <a href="#" class="more">CONTINUE READING</a> </div>
+              <!-- end of post-cnt -->
+            </div>
+            <!-- post-inner -->
+          </div>
+          <!-- end of post -->
+          <!-- post -->
+         
+          <!-- end of post -->
+          <!-- post -->
+          
+          <!-- end of post -->
+          <div class="pagination">
+            <ul>
+              <li class="laquo"><a href="#"><span></span></a></li>
+              <li class="active"><a href="#">1</a></li>
+              <li><a href="#">2</a></li>
+              <li><a href="#">3</a></li>
+              <li><a href="#">4</a></li>
+              <li><a href="#">5</a></li>
+              <li class="raquo"><a href="#"><span></span></a></li>
+              <li><a href="#">10</a></li>
+              <li class="dots">. . .</li>
+              <li><a href="#">last</a></li>
+            </ul>
+          </div>
+        </section>
+        <!-- end of content -->
+        <!-- sidebar -->
+        <aside class="sidebar">
+          <div class="widget">
+            <h3 class="widgettitle">Genres</h3>
+            <ul>
+              <li ng-repeat="genre in genres">
+                <a href="#">{{ genre.name }}</a>
+              </li>
+            </ul>
+          </div>
+          <div class="widget">
+            <h3 class="widgettitle">Opening This Week</h3>
+            <ul>
+              <li ng-repeat="upcomingFilm in upcomingFilms">
+                  <a>{{ upcomingFilm.original_title }}<strong>{{ upcomingFilm.vote_average }}</strong></a>
+              </li>
+            </ul>
+          </div>
+          <div class="widget socials-widget">
+            <h3 class="widgettitle">Get Connected</h3>
+            <ul>
+              <li><a href="#" class="facebook-ico"><span></span>Facebook</a></li>
+              <li><a href="#" class="twitter-ico"><span></span>Twitter</a></li>
+              <li><a href="#" class="linkedin-ico"><span></span>Linkedin</a></li>
+              <li><a href="#" class="you-tube-ico"><span></span>Youtube</a></li>
+              <li><a href="#" class="rss-ico"><span></span>RSS</a></li>
+            </ul>
+          </div>
+        </aside>
+        <!-- end of sidebar -->
+        <div class="cl">&nbsp;</div>
+      </div>
+      <!-- end of main -->
+      <div class="footer">
+        <nav class="footer-nav">
+          <ul>
+            <li><a href="#">Show All</a></li>
+            <li><a href="#">Latest Movies</a></li>
+            <li><a href="#">Top Rated</a></li>
+            <li><a href="#">Most Commented</a></li>
+          </ul>
+        </nav>
+        <p class="copy">Copyright &copy; 2012 <span>|</span> Sitename. Design by <a target="_blank" href="http://chocotemplates.com">ChocoTemplates</a></p>
+      </div>
+    </div>
+    <!-- end of shell -->
+  </div>
+</div>

@@ -57,7 +57,7 @@ textarea { overflow: auto; }
 
 #navigation { width: 669px; height: 66px; padding: 6px 7px 0 8px; margin-top: 10px; position: relative; margin-right: -5px;  background: url(images/navigation.png) no-repeat 0 0; font-family: 'coolvetica', arial, helvetica, serif; font-size: 16px; color: #fff; float: right; }
 #navigation ul { list-style: none; list-style-position: outside; line-height: 49px; }
-#navigation ul li { float: left; background: url(images/navigation-border.png) no-repeat right 0; padding-right: 2px;  }
+#navigation ul li { float: left; background: url(images/navigation-border.png) no-repeat right 0;}
 #navigation ul li a { display: block; color: #fff; text-shadow: rgba(0,0,0,0.5) 0px 2px 2px; padding: 0 36px; position: relative; }
 #navigation ul li a:hover,
 #navigation ul li.last a:hover { background: url(images/navigation-hover.png) repeat-x 0 0; text-decoration: none; }
