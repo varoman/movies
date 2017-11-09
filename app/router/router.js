@@ -18,15 +18,5 @@
                     film: null
                 }
             })
-
-            // .state('lists', {
-            //     url: '/:list',
-            //     templateUrl: 'app/views/main.html',
-            //     controller: 'listController',
-            //     // params: {
-            //     //     list: null
-            //     // }
-            // })
-
-    });    
+    });   
 })();
