@@ -1,14 +1,13 @@
 (function () {
     'use strict';
     angular.module('moviesApp')
-        .controller('mainController',function (APIservice, $scope, $stateParams) {
+        .controller('mainController',function (APIservice, $scope) {
 
             function init() {
                 const upcomingFilmsCount = 5;
-                const genresCount = 13;
                 const filmsPerPage = 5;
                 getUpcomingFilms(upcomingFilmsCount);
-                getGenres(genresCount);
+               // getGenres(genresCount);
                 getMovies(1, filmsPerPage);
             }
 
@@ -18,22 +17,30 @@
                 });
             }
 
-            function getGenres (limitTo) {
-                APIservice.getAllGenres().then((genres) => {
-                    $scope.genres = genres.data.genres.slice(0, limitTo)
-                })
-            }  
-
             function getMovies (page, limitPerPage) {
                 $scope.imagePaths = [];
                 APIservice.getAllMovies(page).then((movies) => {
                     $scope.movies = movies.data.results.slice(0, limitPerPage);
-                    $scope.movies.forEach((movie) => {
-                        movie.imagePath = 'https://image.tmdb.org/t/p/w500' + movie.poster_path;
-                    });
-                    console.log($scope.movies)
-                })
-            }         
+                    Promise.all(getMoviesDetailed($scope.movies)).then((detailedMovies) => {
+                        $scope.$apply(() => {
+                            for (let i = 0; i < $scope.movies.length; i++) {
+                                $scope.movies[i].genres = detailedMovies[i].data.genres;
+                                $scope.movies[i].productionCompanies = detailedMovies[i].data.production_companies;
+                            }
+                        });
+                    })
+                });
+            }
+
+            function getMoviesDetailed(moviesCollection) {
+                let promises = [];
+                moviesCollection.map((movie) => {
+                    promises.push(new Promise((resolve) => {
+                        resolve(APIservice.getSingleMovie(movie.id));
+                     }));
+                });
+                return promises;
+            }
 
             init();
         })

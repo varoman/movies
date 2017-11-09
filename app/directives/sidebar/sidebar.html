@@ -1,0 +1,28 @@
+<aside class="sidebar">
+    <div class="widget">
+        <h3 class="widgettitle">Genres</h3>
+        <ul>
+            <li ng-repeat="genre in genres">
+                <a href="#">{{ genre.name }}</a>
+            </li>
+        </ul>
+    </div>
+    <div class="widget">
+        <h3 class="widgettitle">Opening This Week</h3>
+        <ul>
+            <li ng-repeat="upcomingFilm in upcomingFilms">
+                <a>{{ upcomingFilm.original_title }}<strong>{{ upcomingFilm.vote_average }}</strong></a>
+            </li>
+        </ul>
+    </div>
+    <div class="widget socials-widget">
+        <h3 class="widgettitle">Get Connected</h3>
+        <ul>
+            <li><a href="#" class="facebook-ico"><span></span>Facebook</a></li>
+            <li><a href="#" class="twitter-ico"><span></span>Twitter</a></li>
+            <li><a href="#" class="linkedin-ico"><span></span>Linkedin</a></li>
+            <li><a href="#" class="you-tube-ico"><span></span>Youtube</a></li>
+            <li><a href="#" class="rss-ico"><span></span>RSS</a></li>
+        </ul>
+    </div>
+</aside>

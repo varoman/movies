@@ -31,33 +31,36 @@
             <div class="post-inner">
               <header>
                 <h2><a href="#">{{ movie.title}}</a></h2>
-                <p class="tags"><a href="#">FAMILY</a> <a href="#">COMEDY</a> <a href="#">ANIMATION</a> </p>
+                <p class="tags">
+                  <a ng-repeat="genre in movie.genres">{{ genre.name.toUpperCase() }}</a>
+                </p>
                 <div class="cl">&nbsp;</div>
               </header>
               <div class="img-holder"> 
                 <a href="#">
-                  <img mg-src={{ movies.imagePath }}  alt="{{movies.imagePath}}">
+                  <img ng-src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"  alt="{{movies.imagePath}}">
                 </a> 
-                <a href="css/images/post-img.jpg" class="btn-full-image popup">
-                  <span>FALL IMAGE {{movie.imagePath}}</span>
+                <a href="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" class="btn-full-image popup">
+                  <span>FALL IMAGE</span>
                 </a> 
               </div>
               <!-- meta -->
               <div class="meta">
-                <p class="date">{{ movie.release_date | date: YYMMDD}} <a href="#">JOHN DOE</a></p>
+                <p class="date">{{ movie.release_date | date: YYMMDD}} <a href="#">{{ movie.productionCompanies[0].name }}</a></p>
                 <div class="right">
                   <div class="rating-holder">
                     <p>RATING</p>
                     <div class="rating"> <span style="width: 100%;"></span> </div>
                   </div>
-                  <a href="#" class="comments">59 comments</a> </div>
+                  <a href="#" class="comments">{{ movie.vote_count }} comments</a> </div>
                 <div class="cl">&nbsp;</div>
               </div>
               <!-- end of meta -->
               <!-- post-cnt -->
               <div class="post-cnt">
-                <p>{{ movie.overview }}</p>
-                <a href="#" class="more">CONTINUE READING</a> </div>
+                <p> {{ movie.overview }}</p>
+                <a ui-sref="single({filmUrl:movie.title, film: movie})" class="more">CONTINUE READING</a> </div>
+                <!--ui-sref="blogpost.post({post: blog.UrlName, receivedBlog: blog})"-->
               <!-- end of post-cnt -->
             </div>
             <!-- post-inner -->
@@ -86,34 +89,7 @@
         </section>
         <!-- end of content -->
         <!-- sidebar -->
-        <aside class="sidebar">
-          <div class="widget">
-            <h3 class="widgettitle">Genres</h3>
-            <ul>
-              <li ng-repeat="genre in genres">
-                <a href="#">{{ genre.name }}</a>
-              </li>
-            </ul>
-          </div>
-          <div class="widget">
-            <h3 class="widgettitle">Opening This Week</h3>
-            <ul>
-              <li ng-repeat="upcomingFilm in upcomingFilms">
-                  <a>{{ upcomingFilm.original_title }}<strong>{{ upcomingFilm.vote_average }}</strong></a>
-              </li>
-            </ul>
-          </div>
-          <div class="widget socials-widget">
-            <h3 class="widgettitle">Get Connected</h3>
-            <ul>
-              <li><a href="#" class="facebook-ico"><span></span>Facebook</a></li>
-              <li><a href="#" class="twitter-ico"><span></span>Twitter</a></li>
-              <li><a href="#" class="linkedin-ico"><span></span>Linkedin</a></li>
-              <li><a href="#" class="you-tube-ico"><span></span>Youtube</a></li>
-              <li><a href="#" class="rss-ico"><span></span>RSS</a></li>
-            </ul>
-          </div>
-        </aside>
+        <sidebar-directive></sidebar-directive>
         <!-- end of sidebar -->
         <div class="cl">&nbsp;</div>
       </div>

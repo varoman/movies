@@ -7,16 +7,14 @@
                 url: ':films',
                 templateUrl: 'app/views/main.html',
                 controller: 'mainController',
-                params: {
-                    films: 'dsdsdsd'
-                }
+
             })
-            .state('list', {
-                url: '/:films',
+            .state('single', {
+                url: '/:filmUrl',
                 templateUrl: 'app/views/main.html',
-                controller: '',
+                controller: 'singleController',
                 params: {
-                    films: 'kkkk'
+                    film: null
                 }
             })
     });    
