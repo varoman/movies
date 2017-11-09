@@ -12,7 +12,7 @@
         <nav id="navigation">
           <ul>
             <li><a href="#">SHOW ALL</a></li>
-            <li><a href="#">LATEST MOVIES <span>20</span></a></li>
+            <li><a ui-sref="list({listUrl: 'Latest', film: null})">LATEST MOVIES <span>20</span></a></li>
             <li><a href="#">TOP RATED</a></li>
             <li><a href="#">MOST COMMENTED</a></li>
           </ul>
@@ -34,14 +34,14 @@
                 <p class="tags">
                   <a ng-repeat="genre in movie.genres">{{ genre.name.toUpperCase() }}</a>
                 </p>
-                <div class="cl">&nbsp;</div>
+                <div class="cl"></div>
               </header>
               <div class="img-holder"> 
                 <a href="#">
                   <img ng-src="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}"  alt="{{movies.imagePath}}">
                 </a> 
                 <a href="https://image.tmdb.org/t/p/w500{{ movie.poster_path }}" class="btn-full-image popup">
-                  <span>FALL IMAGE</span>
+                  <span>FULL IMAGE</span>
                 </a> 
               </div>
               <!-- meta -->
@@ -56,22 +56,13 @@
                 <div class="cl">&nbsp;</div>
               </div>
               <!-- end of meta -->
-              <!-- post-cnt -->
               <div class="post-cnt">
                 <p> {{ movie.overview }}</p>
-                <a ui-sref="single({filmUrl:movie.title, film: movie})" class="more">CONTINUE READING</a> </div>
-                <!--ui-sref="blogpost.post({post: blog.UrlName, receivedBlog: blog})"-->
-              <!-- end of post-cnt -->
+                <a ui-sref="list({listUrl: movie.title, film: movie})" class="more">CONTINUE READING</a></div>
             </div>
             <!-- post-inner -->
           </div>
-          <!-- end of post -->
-          <!-- post -->
-         
-          <!-- end of post -->
-          <!-- post -->
-          
-          <!-- end of post -->
+
           <div class="pagination">
             <ul>
               <li class="laquo"><a href="#"><span></span></a></li>
@@ -91,14 +82,14 @@
         <!-- sidebar -->
         <sidebar-directive></sidebar-directive>
         <!-- end of sidebar -->
-        <div class="cl">&nbsp;</div>
+        <div class="cl"></div>
       </div>
       <!-- end of main -->
       <div class="footer">
         <nav class="footer-nav">
           <ul>
-            <li><a href="#">Show All</a></li>
-            <li><a href="#">Latest Movies</a></li>
+            <li><a ui-sref="main">Show All</a></li>
+            <li><a ui-sref="lists({listUrl: 'test', list: movies})">Latest Movies</a></li>
             <li><a href="#">Top Rated</a></li>
             <li><a href="#">Most Commented</a></li>
           </ul>

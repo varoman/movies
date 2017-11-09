@@ -1,21 +1,12 @@
 (function () {
     'use strict';
     angular.module('moviesApp')
-        .controller('mainController',function (APIservice, $scope) {
-
+        .constant('FilmsPerPage', 5)
+        .controller('mainController',function (APIservice, $scope, $stateParams, FilmsPerPage) {
             function init() {
-                const upcomingFilmsCount = 5;
-                const filmsPerPage = 5;
-                getUpcomingFilms(upcomingFilmsCount);
-               // getGenres(genresCount);
-                getMovies(1, filmsPerPage);
+                getMovies(1, FilmsPerPage);
             }
 
-            function getUpcomingFilms (limitTo) {
-                APIservice.getUpcomings().then((upcomings) => {
-                    $scope.upcomingFilms = upcomings.data.results.slice(0, limitTo);
-                });
-            }
 
             function getMovies (page, limitPerPage) {
                 $scope.imagePaths = [];
