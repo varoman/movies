@@ -1,4 +1,4 @@
-<div id="wrapper">
+<div id="wrapper" >
   <div class="light-bg">
     <!-- shell -->
     <div class="shell">
@@ -12,11 +12,12 @@
         <nav id="navigation">
           <ul>
             <li><a href="#">SHOW ALL</a></li>
-            <li><a ui-sref="list({listUrl: 'latest', film: null})">LATEST MOVIES <span>20</span></a></li>
+            <li><a ui-sref="list({listUrl: 'latest', film: null})">LATEST MOVIES <span>{{ details.latestCount }}</span></a></li>
             <li><a ui-sref="list({listUrl: 'top-rated', film: null})">TOP RATED</a></li>
             <li><a ui-sref="list({listUrl: 'most-commented', film: null})">MOST COMMENTED</a></li>
           </ul>
         </nav>
+        <search-directive></search-directive>
         <!-- end of navigation -->
         <div class="cl">&nbsp;</div>
       </div>
@@ -26,6 +27,7 @@
         <!-- content -->
         <section class="content">
           <!-- post -->
+          <h2 ng-if="searchPage && movies.length === 0">No search results. Try something else.</h2>
           <div class="post" ng-repeat="movie in movies">
             <!-- post-inner -->
             <div class="post-inner">
@@ -33,6 +35,7 @@
                 <h2><a href="#">{{ movie.title}}</a></h2>
                 <p class="tags">
                   <a ng-repeat="genre in movie.genres">{{ genre.name.toUpperCase() }}</a>
+                  <a style="color: red; font-size: 15px;" ng-click="details.removeFilm(movies, $index)">X</a>
                 </p>
                 <div class="cl"></div>
               </header>
@@ -63,7 +66,7 @@
             <!-- post-inner -->
           </div>
 
-          <div class="pagination">
+          <div class="pagination" ng-if="rootUrl">
             <ul>
               <li class="laquo"><a href="#"><span></span></a></li>
               <li class="active"><a href="#">1</a></li>
@@ -88,10 +91,10 @@
       <div class="footer">
         <nav class="footer-nav">
           <ul>
-            <li><a ui-sref="main">Show All</a></li>
-            <li><a ui-sref="lists({listUrl: 'test', list: movies})">Latest Movies</a></li>
-            <li><a href="#">Top Rated</a></li>
-            <li><a href="#">Most Commented</a></li>
+            <li><a href="#">Show All</a></li>
+            <li><a ui-sref="list({listUrl: 'latest', film: null})">Latest Movies</a></li>
+            <li><a ui-sref="list({listUrl: 'top-rated', film: null})">Top Rated</a></li>
+            <li><a ui-sref="list({listUrl: 'most-commented', film: null})">Most Commented</a></li>
           </ul>
         </nav>
         <p class="copy">Copyright &copy; 2012 <span>|</span> Sitename. Design by <a target="_blank" href="http://chocotemplates.com">ChocoTemplates</a></p>

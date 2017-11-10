@@ -3,7 +3,7 @@
         <h3 class="widgettitle">Genres</h3>
         <ul>
             <li ng-repeat="genre in genres">
-                <a href="#">{{ genre.name }}</a>
+                <a ng-click="getByGenre(genre.id, genre.name)">{{ genre.name }}</a>
             </li>
         </ul>
     </div>
@@ -11,7 +11,7 @@
         <h3 class="widgettitle">Opening This Week</h3>
         <ul>
             <li ng-repeat="upcomingFilm in upcomingFilms">
-                <a>{{ upcomingFilm.original_title }}<strong>{{ upcomingFilm.vote_average }}</strong></a>
+                <a ui-sref="list({listUrl: upcomingFilm.original_title, film: upcomingFilm})">{{ upcomingFilm.original_title }}<strong>{{ upcomingFilm.vote_average }}</strong></a>
             </li>
         </ul>
     </div>

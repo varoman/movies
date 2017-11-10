@@ -1,0 +1,24 @@
+<div>
+    <form name="searchForm" novalidate>
+        <input type="text"
+               name="film"
+               ng-model="search.film"
+               required
+               placeholder="search by film, actor or genre">
+        <br>
+
+        <input type="text"
+               name="country"
+               ng-model="search.country"
+               placeholder="search by country">
+        <br>
+
+        <input type="text"
+               name="date"
+               ng-model="search.date"
+               placeholder="search by date">
+
+        <button ng-click="find(search)">Search</button>
+    </form>
+
+</div>

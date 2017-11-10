@@ -1,8 +1,7 @@
 (function () {
     'use strict';
-    angular.module('moviesApp').config(function($stateProvider, $urlRouterProvider, $locationProvider) {
+    angular.module('moviesApp').config(function($stateProvider, $urlRouterProvider) {
         $urlRouterProvider.otherwise('');
-      //  $locationProvider.html5Mode(true);
         $stateProvider
             .state('main', {
                 url: '',
@@ -17,6 +16,20 @@
                 params: {
                     film: null
                 }
+            })
+            .state('genres', {
+                url: '/genres/:genre',
+                templateUrl: 'app/views/main.html',
+                controller: 'genresController',
+                params: {
+                    genreId: ''
+                }
+            })
+
+            .state('search', {
+                url: '/search',
+                templateUrl: 'app/views/main.html',
+                controller: 'searchController'
             })
     });   
 })();

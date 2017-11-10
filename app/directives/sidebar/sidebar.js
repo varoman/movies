@@ -1,6 +1,6 @@
 (function () {
     'use strcit';
-    angular.module('moviesApp').directive('sidebarDirective', function(APIservice){
+    angular.module('moviesApp').directive('sidebarDirective', function(APIservice, $state){
         'use strict';
         return {
             templateUrl:'app/directives/sidebar/sidebar.html',
@@ -26,6 +26,10 @@
                         scope.upcomingFilms = upcomings.data.results.slice(0, limitTo);
                     });
                 }
+
+                scope.getByGenre = function (genreId, genreName) {
+                    $state.go('genres', {genre: genreName, genreId: genreId});
+                };
 
                 init();
             }

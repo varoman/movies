@@ -1,0 +1,24 @@
+(function () {
+    'use strcit';
+    angular.module('moviesApp').directive('searchDirective', function($state, searchService, $location){
+        'use strict';
+        return {
+            templateUrl:'app/directives/search/search.html',
+            restrict:'E',
+            replace: true,
+            scope: {},
+            link: function (scope) {
+                scope.find = function (searchTerms) {
+                    if (!searchTerms || !searchTerms.film) return;
+                    if ($location.path() !== '/search') {
+                        searchService.setSearchTerms(searchTerms);
+                        $state.go('search');
+                        return;
+                    }
+                   scope.$emit('searchEntered', searchTerms);
+                }
+            }
+        };
+    });
+})();
+

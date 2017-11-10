@@ -9,17 +9,22 @@
 </head>
 <body ng-app="moviesApp">
   
-  <div ui-view></div>
+  <div ui-view autoscroll="true"></div>
   
   <script src="app/angular.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/angular-ui-router/1.0.3/angular-ui-router.js"></script>
   <script src="app/modules/movies.js"></script>
   <script src="app/router/router.js"></script>
   <script src="app/services/APIs.js"></script>
+  <script src="app/services/details.js"></script>
+  <script src="app/services/search.js"></script>
 
   <script src="app/controllers/main.js"></script>
   <script src="app/controllers/list.js"></script>
+  <script src="app/controllers/genres.js"></script>
+  <script src="app/controllers/search.js"></script>
 
   <script src="app/directives/sidebar/sidebar.js"></script>
+  <script src="app/directives/search/search.js"></script>
 </body>
 </html>
