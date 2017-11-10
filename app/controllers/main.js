@@ -5,7 +5,6 @@
         .controller('mainController', function (APIservice, $scope, $stateParams, FilmsPerPage, detailsService, $rootScope) {
             function init() {
                 getMovies(1, FilmsPerPage);
-                $scope.rootUrl = true;
                 $rootScope.details = detailsService;
             }
 
@@ -14,9 +13,13 @@
                 APIservice.getAllMovies(page).then((movies) => {
                     $scope.movies = movies.data.results.slice(0, limitPerPage);
                     detailsService.addDetails($scope.movies, $scope);
+                    $scope.$broadcast('gotMovies', {pageCount: movies.data.total_pages, getter: APIservice.getAllMovies});
                 });
             }
 
             init();
         })
 })();
+
+
+

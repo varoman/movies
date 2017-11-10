@@ -161,3 +161,25 @@ filter:alpha(opacity=100);}
 .footer p.copy span { padding: 0 10px; color: #616161; }
 .footer p.copy a { color: #e0e0e0; text-decoration: underline; }
 .footer p.copy a:hover { color: #fff; text-decoration: none; }
+
+#filminfo {
+    font-family: "Trebuchet MS", Arial, Helvetica, sans-serif;
+    border-collapse: collapse;
+    width: 100%;
+}
+
+#filminfo td, #filminfo th {
+    border: 1px solid #ddd;
+    padding: 8px;
+}
+
+#filminfo tr:nth-child(even){background-color: #f2f2f2;}
+
+
+#filminfo th {
+    padding-top: 12px;
+    padding-bottom: 12px;
+    text-align: left;
+    background-color: #4CAF50;
+    color: white;
+}

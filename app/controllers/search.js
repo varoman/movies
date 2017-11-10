@@ -1,9 +1,9 @@
 (function () {
     'use strict';
     angular.module('moviesApp')
-        .controller('searchController', function ($scope, searchService, APIservice) {
+        .controller('searchController', function ($scope, searchService, APIservice, detailsService) {
             function init() {
-                $scope.searchPage = true;
+                $scope.notPaginated = true;
                 $scope.terms = searchService.searchTerms;
                 $scope.searchParams  = {};
                 $scope.$watch('terms',  (newValue) => {
@@ -17,9 +17,10 @@
 
                 $scope.$watch('searchParams', (newTerms) => {
                     if(!$scope.searchParams || !$scope.searchParams.film) return;
-                    APIservice.searchByTerms(newTerms).then((searchResults) => {
+                    APIservice.searchByTerms(newTerms, 1).then((searchResults) => {
                         $scope.movies = searchResults.data.results;
-                    })
+                        detailsService.addDetails($scope.movies, $scope);
+                    });
                 });
             }
 

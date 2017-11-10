@@ -50,8 +50,8 @@
               return $http.get('https://api.themoviedb.org/3/movie/' + movieId + '?api_key=e51d01a3f8fa370a06cd182e41adce34&language=en-US')
             };
 
-            factory.getLatestFilms = function () {
-              return $http.get('https://api.themoviedb.org/3/movie/now_playing?api_key=e51d01a3f8fa370a06cd182e41adce34&language=en-US&page=1');
+            factory.getLatestFilms = function (page) {
+              return $http.get('https://api.themoviedb.org/3/movie/now_playing?api_key=e51d01a3f8fa370a06cd182e41adce34&language=en-US&page=' + page);
             };
 
             factory.getTopRatedFilms = function (page) {
@@ -62,9 +62,9 @@
               return $http.get('https://api.themoviedb.org/3/genre/' + id + '/movies?api_key=e51d01a3f8fa370a06cd182e41adce34&language=en-US&include_adult=false&sort_by=created_at.asc');
             };
 
-            factory.searchByTerms = function (terms) {
+            factory.searchByTerms = function (terms, page) {
                 return $http.get('https://api.themoviedb.org/3/search/movie?api_key=e51d01a3f8fa370a06cd182e41adce34&language=en-US' +
-                    filterQuery(terms.film) + filterRegion(terms.country) + filterDate(terms.date));
+                    filterQuery(terms.film) + filterRegion(terms.country) + '&page=' + page + filterDate(terms.date));
             };
 
             function filterQuery(query) {

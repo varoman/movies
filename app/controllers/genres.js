@@ -12,7 +12,7 @@
                     $scope.movies = collection.data.results.slice(0, FilmsPerPage);
                     detailsService.addDetails($scope.movies, $scope);
                 }, (error) => {
-                    getTypedGenre()
+                    getTypedGenre();
                 });
             }
 

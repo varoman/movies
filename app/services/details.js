@@ -22,6 +22,8 @@
                         for (let i = 0; i < collection.length; i++) {
                             collection[i].genres = detailedMovies[i].data.genres;
                             collection[i].productionCompanies = detailedMovies[i].data.production_companies;
+                            collection[i].budget = detailedMovies[i].data.budget;
+                            collection[i].runtime = detailedMovies[i].data.runtime;
                         }
                     });
                 })

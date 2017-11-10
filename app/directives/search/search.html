@@ -7,6 +7,10 @@
                placeholder="search by film, actor or genre">
         <br>
 
+        <div ng-messages="searchForm.film.$error" ng-show="searchClicked">
+          <p ng-message="required" style="color: red;">This field is required.</p>
+        </div>
+
         <input type="text"
                name="country"
                ng-model="search.country"

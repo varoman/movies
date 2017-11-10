@@ -5,7 +5,11 @@
       <!-- header -->
       <div class="header">
         <!-- socials -->
-        <div class="socials"> <a href="#" class="facebook-ico">facebook-ico</a> <a href="#" class="twitter-ico">twitter-ico</a> <a href="#" class="you-tube-ico">you-tube-ico</a> </div>
+        <div class="socials"> 
+          <a href="https://www.facebook.com/themoviedb/" class="facebook-ico">facebook-ico</a> 
+          <a href="https://twitter.com/themoviedb?lang=en" class="twitter-ico">twitter-ico</a> 
+          <a href="https://www.youtube.com/user/TheMovieDB" class="you-tube-ico">you-tube-ico</a> 
+        </div>
         <!-- end of socials -->
         <h1 id="logo"><a href="#">Moviereviews</a></h1>
         <!-- navigation -->
@@ -61,24 +65,30 @@
               <!-- end of meta -->
               <div class="post-cnt">
                 <p> {{ movie.overview }}</p>
-                <a ui-sref="list({listUrl: movie.title, film: movie})" class="more">CONTINUE READING</a></div>
+                <a  ui-sref="list({listUrl: movie.title, film: movie})" 
+                    ng-hide="movies.length <= 1"
+                    class="more">CONTINUE READING</a></div>
             </div>
             <!-- post-inner -->
           </div>
-
-          <div class="pagination" ng-if="rootUrl">
-            <ul>
-              <li class="laquo"><a href="#"><span></span></a></li>
-              <li class="active"><a href="#">1</a></li>
-              <li><a href="#">2</a></li>
-              <li><a href="#">3</a></li>
-              <li><a href="#">4</a></li>
-              <li><a href="#">5</a></li>
-              <li class="raquo"><a href="#"><span></span></a></li>
-              <li><a href="#">10</a></li>
-              <li class="dots">. . .</li>
-              <li><a href="#">last</a></li>
-            </ul>
+              <table id="filminfo" ng-if="movies.length === 1">
+                <thead>
+                  <th>Date of Release</th>
+                  <th>Rating</th>
+                  <th>Voted</th>
+                  <th>Budget</th>
+                  <th>Duration</th>
+                </thead>
+                <tbody>
+                  <td>{{ movies[0].release_date | date: YYMMDD}}</td>
+                  <td>{{ movies[0].vote_average }}</td>
+                  <td>{{ movies[0].vote_count }}</td>
+                  <td>{{ movies[0].budget | currency}}</td>
+                  <td>{{ movies[0].runtime }} min.</td>
+                </tbody>
+              </table>
+          <div ng-hide="movies.length <= 1 || notPaginated"> {{notPaginated}}
+            <pagination-directive binding-movies="movies"></pagination-directive>
           </div>
         </section>
         <!-- end of content -->
@@ -97,7 +107,7 @@
             <li><a ui-sref="list({listUrl: 'most-commented', film: null})">Most Commented</a></li>
           </ul>
         </nav>
-        <p class="copy">Copyright &copy; 2012 <span>|</span> Sitename. Design by <a target="_blank" href="http://chocotemplates.com">ChocoTemplates</a></p>
+        <p class="copy">Copyright &copy; 2017 <span>|</span> Sitename. Design by <a target="_blank" href="http://chocotemplates.com">ChocoTemplates</a></p>
       </div>
     </div>
     <!-- end of shell -->

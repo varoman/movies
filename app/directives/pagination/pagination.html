@@ -1,0 +1,13 @@
+<div class="pagination">
+  <ul>
+    <li class="laquo" 
+    	ng-click="currentPage === 1 || changePage(currentPage - 1)"><a><span></span></a></li>
+    <li ng-repeat="page in pageCount | limitTo: 15 track by $index"
+        ng-class="{'active': $index + 1 == currentPage}"
+        ng-click="changePage($index + 1)" ><a>{{ $index + 1 }}</a>
+    </li>
+    <li class="raquo" 
+    	ng-click="currentPage === 15 ||  changePage(currentPage + 1)"><a><span></span></a>
+	</li>
+  </ul>
+</div>

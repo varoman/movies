@@ -8,7 +8,9 @@
             replace: true,
             scope: {},
             link: function (scope) {
+                scope.searchClicked = false;
                 scope.find = function (searchTerms) {
+                    scope.searchClicked = true;
                     if (!searchTerms || !searchTerms.film) return;
                     if ($location.path() !== '/search') {
                         searchService.setSearchTerms(searchTerms);
